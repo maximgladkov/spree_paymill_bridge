@@ -1,0 +1,19 @@
+# encoding: UTF-8
+Gem::Specification.new do |s|
+  s.platform    = Gem::Platform::RUBY
+  s.name        = 'spree_paymill_bridge'
+  s.version     = '0.0.1'
+  s.summary     = 'Paymill gateway with javascript bridge for Spree'
+  s.required_ruby_version = '>= 1.9.3'
+
+  s.author    = 'Max White'
+  s.email     = 'dev@ontracon.co.uk'
+
+  #s.files       = `git ls-files`.split("\n")
+  #s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
+  s.require_path = 'lib'
+  s.requirements << 'none'
+
+  s.add_dependency 'spree_core', '~> 2.2.2'
+  s.add_dependency 'paymill', '~> 0.4.0'
+end
