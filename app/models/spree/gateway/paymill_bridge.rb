@@ -44,18 +44,13 @@ module Spree
             return unless card.token
             
             paymill_request do
-                card.paymill_client = find_or_create_client(payment.order.email, card.name).id
+                card.paymill_client = Paymill::Client.find_or_create(payment.order.email, card.name).id
                 card.paymill_payment = Paymill::Payment.create(token: card.token, client: card.paymill_client).id
                 card.save
             end
         end
 
     private
-
-        def find_or_create_client(email, name)
-            Paymill::Client.all(email: email)[0] ||
-            Paymill::Client.create(email: email, description: name)
-        end
 
         def paymill_request
             Paymill.api_key = preferred_private_key

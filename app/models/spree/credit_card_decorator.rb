@@ -7,13 +7,14 @@ Spree::CreditCard.class_eval do
 private
 
 	alias_method :__old_require_card_numbers?, :require_card_numbers?
-
  	def require_card_numbers?
  		__old_require_card_numbers? && payment_method.require_card_numbers?
  	end
 
+
+ 	alias_method :__old_can_void?, :can_void?
  	def can_void?(payment)
-      	!payment.void? && !payment.completed?
+      	__old_can_void?(payment) && !payment.completed?
     end
 
 end

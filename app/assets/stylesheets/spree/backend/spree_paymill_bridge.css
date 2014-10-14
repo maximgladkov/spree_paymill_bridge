@@ -1,0 +1,4 @@
+/* 	Counteract spree/backend/select_payments.js.coffee 
+	which is seemingly redundant 
+*/
+.payment-methods fieldset { display: block; }
