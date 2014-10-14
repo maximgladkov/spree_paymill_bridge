@@ -1,5 +1,4 @@
 Spree::CreditCard.class_eval do 
-	belongs_to :user
 	attr_accessor :token
 	alias_attribute :paymill_client, :gateway_customer_profile_id
 	alias_attribute :paymill_payment, :gateway_payment_profile_id
@@ -10,11 +9,5 @@ private
  	def require_card_numbers?
  		__old_require_card_numbers? && payment_method.require_card_numbers?
  	end
-
-
- 	alias_method :__old_can_void?, :can_void?
- 	def can_void?(payment)
-      	__old_can_void?(payment) && !payment.completed?
-    end
 
 end

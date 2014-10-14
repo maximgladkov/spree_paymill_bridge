@@ -40,7 +40,6 @@ module Spree
 
         def create_profile(payment)
             card = payment.source
-            return if card.has_payment_profile?
             return unless card.token
             
             paymill_request do
