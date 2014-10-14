@@ -9,7 +9,7 @@ Installation
 Add spree_paymill_bridge to your Gemfile:
 
 ```ruby
-gem 'spree_paymill_bridge'
+gem 'spree_paymill_bridge', github: 'mushishi78/spree_paymill_bridge'
 ```
 
 Bundle your dependencies and run the installation generator:
