@@ -39,9 +39,7 @@ module Spree
         end
 
         def create_profile(payment)
-            card = payment.source
-            return unless card.token
-            
+            card = payment.source            
             paymill_request do
                 card.paymill_client = Paymill::Client.find_or_create(payment.order.email, card.name).id
                 card.paymill_payment = Paymill::Payment.create(token: card.token, client: card.paymill_client).id
