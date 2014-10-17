@@ -52,9 +52,14 @@ module Spree
 
         def paymill_request
             Paymill.api_key = preferred_private_key
-            yield.try(:to_active_merchant_response)
-        rescue Paymill::PaymillError => error
-            gateway_error(error)
+
+            begin
+                result = yield
+            rescue Paymill::PaymillError => error
+                gateway_error(error)
+            end
+
+            result.try(:to_active_merchant_response)
         end
 
         def gateway_error(error)
