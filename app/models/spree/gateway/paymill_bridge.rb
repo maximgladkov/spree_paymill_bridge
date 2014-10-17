@@ -39,7 +39,7 @@ module Spree
         end
 
         def create_profile(payment)
-            return unless payment.checkout?
+            return if payment.invalid?
             card = payment.source
             paymill_request do
                 card.paymill_client = Paymill::Client.find_or_create(payment.order.email, card.name).id
