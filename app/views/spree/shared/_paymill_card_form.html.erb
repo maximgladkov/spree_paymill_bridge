@@ -1,69 +1,69 @@
 <%
-	id = payment_method.id
-	name_id 		= "holdername-#{id}"
-	number_id       = "card-number-#{id}"
-	month_id        = "exp-month-#{id}"
-	year_id         = "exp-year-#{id}"
-	code_id         = "card-cvc-#{id}"
-	currency_id     = "card-currency-#{id}"
-	public_key_id   = "public-key-#{id}"
-	is_paymill_id   = "is-paymill-#{id}"
-	token_id        = "token-#{id}"
-	cc_type_id      = "brand-#{id}"
-	last_digits_id  = "last-digits-#{id}"
+  id = payment_method.id
+  name_id     = "holdername-#{id}"
+  number_id       = "card-number-#{id}"
+  month_id        = "exp-month-#{id}"
+  year_id         = "exp-year-#{id}"
+  code_id         = "card-cvc-#{id}"
+  currency_id     = "card-currency-#{id}"
+  public_key_id   = "public-key-#{id}"
+  is_paymill_id   = "is-paymill-#{id}"
+  token_id        = "token-#{id}"
+  cc_type_id      = "brand-#{id}"
+  last_digits_id  = "last-digits-#{id}"
 
- 	param_prefix = "payment_source[#{id}]"
-	required = content_tag(:span, '*', class: 'required') + tag(:br)
+  param_prefix = "payment_source[#{id}]"
+  required = content_tag(:span, '*', class: 'required') + tag(:br)
 
-	number_opts = {
-		id: number_id, 
-		class: 'required cardNumber', 
-		size: 19,
-		maxlength: 19, 
-		autocomplete: "off"
-	}
+  number_opts = {
+    id: number_id, 
+    class: 'required cardNumber', 
+    size: 19,
+    maxlength: 19, 
+    autocomplete: "off"
+  }
 
-	month_opts = {
-		prefix: param_prefix,
-		use_month_numbers: true
-	}
+  month_opts = {
+    prefix: param_prefix,
+    use_month_numbers: true
+  }
 
-	year_opts = {
-		prefix: param_prefix,
-		start_year: Date.today.year, 
-		end_year: Date.today.year + 50
-	}
+  year_opts = {
+    prefix: param_prefix,
+    start_year: Date.today.year, 
+    end_year: Date.today.year + 50
+  }
 
-	code_opts = {
-		id: code_id, 
-		class: 'required cardCode', 
-		size: 5, 
-		autocomplete: "off"
-	}
+  code_opts = {
+    id: code_id, 
+    class: 'required cardCode', 
+    size: 5, 
+    autocomplete: "off"
+  }
 %>
 
 <%= image_tag 'credit_cards/credit_card.gif', id: 'credit-card-image' %>
 
 <p class='field'>
-	<%= label_tag name_id, Spree.t(:name_on_card) %><%= required %>
-	<%= text_field_tag "#{param_prefix}[name]", name, id: name_id %>
+  <%= label_tag name_id, Spree.t(:name_on_card) %><%= required %>
+  <%= text_field_tag "#{param_prefix}[name]", name, id: name_id %>
 </p>
 
 <p class='field'>
-	<%= label_tag number_id, Spree.t(:card_number) %><%= required %>
-	<%= text_field_tag '', '', number_opts %>
+  <%= label_tag number_id, Spree.t(:card_number) %><%= required %>
+  <%= text_field_tag '', '', number_opts %>
 </p>
 
 <p class='field'>
-	<%= label_tag '', Spree.t(:expiration) %><%= required %>
-	<%= select_month Date.today, month_opts, id: month_id %>
-	<%= select_year Date.today, year_opts, id: year_id %>
+  <%= label_tag '', Spree.t(:expiration) %><%= required %>
+  <%= select_month Date.today, month_opts, id: month_id %>
+  <%= select_year Date.today, year_opts, id: year_id %>
 </p>
 
 <p class='field'>
-	<%= label_tag code_id, Spree.t(:card_code) %><%= required %>
-	<%= text_field_tag '', '', code_opts %>
-	<%= link_to "(#{Spree.t(:what_is_this)})", spree.content_path('cvv'), target: '_blank' %>
+  <%= label_tag code_id, Spree.t(:card_code) %><%= required %>
+  <%= text_field_tag '', '', code_opts %>
+  <%= link_to "(#{Spree.t(:what_is_this)})", spree.content_path('cvv'), target: '_blank' %>
 </p>
 
 <%= hidden_field_tag '', currency, id: "card-currency-#{payment_method.id}" %>
