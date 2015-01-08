@@ -1,6 +1,8 @@
 Spree Paymill Bridge
 ====================
 
+## N.B. This code is not production ready yet.
+
 Paymil payment gateway for the Spree ecommerce platform, utilizing Paymill's javascript bridge.
 
 Installation
