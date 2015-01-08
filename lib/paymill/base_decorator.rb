@@ -1,7 +1,6 @@
-Paymill::Base.class_eval do 
-
+Paymill::Base.class_eval do
   def to_active_merchant_response
-    response(true, "#{self.class} Success", {}, {authorization: authorization})
+    response(true, "#{self.class} Success", {}, authorization: authorization)
   end
 
 private
@@ -13,5 +12,4 @@ private
   def authorization
     id
   end
-
 end

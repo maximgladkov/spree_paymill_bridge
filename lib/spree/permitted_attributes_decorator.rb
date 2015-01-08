@@ -1,3 +1,5 @@
-module Spree::PermittedAttributes
-  @@source_attributes << :token
+module Spree
+  module PermittedAttributes
+    @@source_attributes << :token
+  end
 end

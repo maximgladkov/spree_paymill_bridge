@@ -6,9 +6,7 @@ module SpreePaymillBridge
     engine_name 'spree_paymill_bridge'
 
     # use rspec for tests
-    config.generators do |g|
-      g.test_framework :rspec
-    end
+    config.generators { |g| g.test_framework :rspec }
 
     def self.activate
       Dir.glob(File.join(File.dirname(__FILE__), '../../**/*_decorator*.rb')) do |c|
@@ -16,11 +14,10 @@ module SpreePaymillBridge
       end
     end
 
-    config.to_prepare &method(:activate).to_proc
-    
-    initializer "spree.gateway.payment_methods", :after => "spree.register.payment_methods" do |app|
-        app.config.spree.payment_methods << Spree::Gateway::PaymillBridge
-    end
+    config.to_prepare(&method(:activate).to_proc)
 
+    initializer 'spree.gateway.payment_methods', after: 'spree.register.payment_methods' do |app|
+      app.config.spree.payment_methods << Spree::Gateway::PaymillBridge
+    end
   end
 end

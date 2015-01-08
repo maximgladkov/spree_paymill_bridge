@@ -1,4 +1,4 @@
-Spree::CreditCard.class_eval do 
+Spree::CreditCard.class_eval do
   attr_accessor :token
   alias_attribute :paymill_client, :gateway_customer_profile_id
   alias_attribute :paymill_payment, :gateway_payment_profile_id
@@ -12,5 +12,4 @@ private
     return true unless payment_method.respond_to?(:require_card_numbers?)
     payment_method.require_card_numbers?
   end
-
 end

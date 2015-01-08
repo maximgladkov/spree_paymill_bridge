@@ -1,6 +1,5 @@
 Paymill::APIError.class_eval do
-
-  def initialize(msg=nil)
+  def initialize(msg = nil)
     super(parse_message(msg))
   end
 
@@ -19,5 +18,4 @@ private
   def messages(msg)
     msg['messages'].values.join(', ')
   end
-
 end

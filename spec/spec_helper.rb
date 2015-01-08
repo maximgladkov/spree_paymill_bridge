@@ -56,9 +56,10 @@ RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
-  # Capybara javascript drivers require transactional fixtures set to false, and we use DatabaseCleaner
-  # to cleanup after each test instead.  Without transactional fixtures set to false the records created
-  # to setup a test will be unavailable to the browser, which runs under a separate server instance.
+  # Capybara javascript drivers require transactional fixtures set to false,
+  # and we use DatabaseCleaner to cleanup after each test instead. Without
+  # transactional fixtures set to false the records created to setup a test
+  # will be unavailable to the browser, which runs under a separate server instance.
   config.use_transactional_fixtures = false
 
   # Ensure Suite is set to use transactions for speed.
@@ -67,7 +68,8 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with :truncation
   end
 
-  # Before each spec check if it is a Javascript test and switch between using database transactions or not where necessary.
+  # Before each spec check if it is a Javascript test and switch between using
+  # database transactions or not where necessary.
   config.before :each do
     DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
     DatabaseCleaner.start
