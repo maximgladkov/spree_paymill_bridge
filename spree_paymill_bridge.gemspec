@@ -1,19 +1,16 @@
-# encoding: UTF-8
+# coding: utf-8
+version = File.read(File.expand_path("../VERSION", __FILE__)).strip
+
 Gem::Specification.new do |s|
-  s.platform    = Gem::Platform::RUBY
-  s.name        = 'spree_paymill_bridge'
-  s.version     = '0.0.1'
-  s.summary     = 'Paymill gateway with javascript bridge for Spree'
-  s.required_ruby_version = '>= 1.9.3'
-
-  s.author    = 'Max White'
-  s.email     = 'dev@ontracon.co.uk'
-
-  # s.files       = `git ls-files`.split("\n")
-  # s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
+  s.name         = 'spree_paymill_bridge'
+  s.version      = version
+  s.author       = 'Max White'
+  s.email        = 'mushishi78@gmail.com'
+  s.summary      = 'Paymill gateway with javascript bridge for Spree'
+  s.license      = 'MIT'
+  s.files        = Dir['LICENSE.txt', 'README.md', 'app/**/*', 'config/**/*', 'lib/**/*', 'vendor/**/*']
   s.require_path = 'lib'
-  s.requirements << 'none'
-
-  s.add_dependency 'spree_core', '~> 2.2.2'
-  s.add_dependency 'paymill', '>= 0.4.0'
+  s.add_runtime_dependency 'spree_core', '2.2.2'
+  s.add_runtime_dependency 'paymill', '~> 0.4', '>= 0.4.0'
+  s.add_development_dependency 'rspec', '~> 3.1', '>= 3.1.0'
 end
